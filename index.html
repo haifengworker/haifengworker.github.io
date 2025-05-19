@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>前端职业发展路线图</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#165DFF',
+            secondary: '#7B61FF',
+            success: '#00B42A',
+            warning: '#FF7D00',
+            danger: '#F53F3F',
+            dark: '#1D2129',
+            light: '#F2F3F5'
+          },
+          fontFamily: {
+            inter: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .card-hover {
+        @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+      }
+      .timeline-line {
+        @apply absolute top-0 bottom-0 left-1/2 w-1 bg-primary/20 -translate-x-1/2;
+      }
+      .timeline-dot {
+        @apply absolute left-1/2 w-4 h-4 bg-primary rounded-full -translate-x-1/2;
+      }
+    }
+  </style>
+</head>
+<body class="font-inter bg-gray-50 text-dark">
+  <!-- 导航栏 -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-2">
+        <i class="fa-solid fa-map-signs text-primary text-2xl"></i>
+        <h1 class="text-xl font-bold text-primary">职业发展路线图</h1>
+      </div>
+      <nav class="hidden md:flex space-x-6">
+        <a href="#overview" class="text-gray-600 hover:text-primary transition-colors">概述</a>
+        <a href="#skills" class="text-gray-600 hover:text-primary transition-colors">技能树</a>
+        <a href="#timeline" class="text-gray-600 hover:text-primary transition-colors">成长路径</a>
+        <a href="#resources" class="text-gray-600 hover:text-primary transition-colors">学习资源</a>
+        <a href="#tools" class="text-gray-600 hover:text-primary transition-colors">推荐工具</a>
+      </nav>
+      <button class="md:hidden text-gray-600 hover:text-primary" id="mobile-menu-button">
+        <i class="fa-solid fa-bars text-xl"></i>
+      </button>
+    </div>
+    <!-- 移动端菜单 -->
+    <div class="md:hidden hidden bg-white shadow-md absolute w-full" id="mobile-menu">
+      <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+        <a href="#overview" class="text-gray-600 hover:text-primary py-2 transition-colors">概述</a>
+        <a href="#skills" class="text-gray-600 hover:text-primary py-2 transition-colors">技能树</a>
+        <a href="#timeline" class="text-gray-600 hover:text-primary py-2 transition-colors">成长路径</a>
+        <a href="#resources" class="text-gray-600 hover:text-primary py-2 transition-colors">学习资源</a>
+        <a href="#tools" class="text-gray-600 hover:text-primary py-2 transition-colors">推荐工具</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 英雄区域 -->
+    <section class="relative bg-gradient-to-r from-primary/90 to-secondary/90 text-white py-20 overflow-hidden">
+      <div class="absolute inset-0 bg-[url('https://picsum.photos/id/1/1920/1080')] opacity-10 bg-cover bg-center"></div>
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-3xl mx-auto text-center">
+          <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight mb-6 text-shadow">
+            前端开发职业发展路线图
+          </h1>
+          <p class="text-[clamp(1rem,2vw,1.25rem)] opacity-90 mb-8">
+            从入门到高级工程师的完整成长路径，助你规划职业生涯，掌握核心技能
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="#skills" class="px-6 py-3 bg-white text-primary font-medium rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5">
+              探索技能树 <i class="fa-solid fa-arrow-down ml-2 animate-bounce"></i>
+            </a>
+            <a href="#timeline" class="px-6 py-3 bg-transparent border-2 border-white text-white font-medium rounded-lg hover:bg-white/10 transition-all">
+              查看成长路径
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="w-full h-[60px] md:h-[80px]">
+          <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="#F9FAFB"></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 概述部分 -->
+    <section id="overview" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">前端开发职业发展概述</h2>
+          <p class="text-gray-600 max-w-3xl mx-auto">前端开发是一个充满活力和创新的领域，从基础的页面制作到复杂的交互应用，前端工程师需要掌握多种技能和工具。</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+            <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+              <i class="fa-solid fa-code text-primary text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">技术学习</h3>
+            <p class="text-gray-600">掌握HTML、CSS、JavaScript等基础技术，深入学习框架和库，了解前端工程化和性能优化。</p>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+            <div class="w-14 h-14 bg-secondary/10 rounded-full flex items-center justify-center mb-4">
+              <i class="fa-solid fa-cogs text-secondary text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">项目能力</h3>
+            <p class="text-gray-600">从简单页面到复杂应用，学习如何设计架构、处理状态管理、优化性能和解决实际问题。</p>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+            <div class="w-14 h-14 bg-success/10 rounded-full flex items-center justify-center mb-4">
+              <i class="fa-solid fa-users text-success text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">软技能提升</h3>
+            <p class="text-gray-600">沟通协作、团队管理、技术分享等软技能是从技术专家成长为技术 leader 的关键。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 技能树部分 -->
+    <section id="skills" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">前端开发技能树</h2>
+          <p class="text-gray-600 max-w-3xl mx-auto">前端开发需要掌握多种技能，从基础到高级，从技术到软技能，形成完整的能力体系。</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- 技术技能 -->
+          <div class="bg-gray-50 rounded-xl p-6 shadow-sm">
+            <h3 class="text-xl font-bold mb-4 flex items-center">
+              <i class="fa-solid fa-laptop-code text-primary mr-2"></i> 技术技能
+            </h3>
+            
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-medium">HTML/CSS</span>
+                  <span>高级</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="bg-primary h-2.5 rounded-full" style="width: 90%"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-medium">JavaScript/TypeScript</span>
+                  <span>高级</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="bg-primary h-2.5 rounded-full" style="width: 85%"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-medium">React/Vue/Angular</span>
+                  <span>中级</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="bg-primary h-2.5 rounded-full" style="width: 75%"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-medium">状态管理 (Redux/MobX/Vuex)</span>
+                  <span>中级</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="bg-primary h-2.5 rounded-full" style="width: 70%"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-medium">前端工程化 (Webpack/Vite)</span>
+                  <span>中级</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="bg-primary h-2.5 rounded-full" style="width: 70%"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-medium">性能优化</span>
+                  <span>初级</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="bg-primary h-2.5 rounded-full" style="width: 50%"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-medium">移动端开发 (React Native/Flutter)</span>
+                  <span>初级</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="bg-primary h-2.5 rounded-full" style="width: 40%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 软技能 -->
+          <div class="bg-gray-50 rounded-xl p-6 shadow-sm">
+            <h3 class="text-xl font-bold mb-4 flex items-center">
+              <i class="fa-solid fa-users text-secondary mr-2"></i> 软技能
+            </h3>
+            
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-medium">沟通协作</span>
+                  <span>中级</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="bg-secondary h-2.5 rounded-full" style="width: 75%"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-medium">问题解决能力</span>
+                  <span>中级</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="bg-secondary h-2.5 rounded-full" style="width: 70%"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-medium">学习能力</span>
+                  <span>高级</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="bg-secondary h-2.5 rounded-full" style="width: 85%"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-medium">团队管理</span>
+                  <span>初级</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="bg-secondary h-2.5 rounded-full" style="width: 45%"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-medium">技术分享</span>
+                  <span>中级</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="bg-secondary h-2.5 rounded-full" style="width: 65%"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-medium">项目管理</span>
+                  <span>初级</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="bg-secondary h-2.5 rounded-full" style="width: 50%"></div>
+                </div>
+              </div>
+              
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-medium">时间管理</span>
+                  <span>中级</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                  <div class="bg-secondary h-2.5 rounded-full" style="width: 70%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 技能分类卡片 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+          <div class="bg-white rounded-xl shadow-md p-6 card-hover border-t-4 border-primary">
+            <h4 class="text-lg font-bold mb-3 flex items-center">
+              <i class="fa-solid fa-code text-primary mr-2"></i> 基础层
+            </h4>
+            <p class="text-gray-600 mb-4">前端开发的核心基础，包括HTML、CSS、JavaScript等基础技术。</p>
+            <ul class="space-y-2 text-gray-700">
+              <li class="flex items-center"><i class="fa-solid fa-check text-success mr-2"></i> 语义化HTML</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-success mr-2"></i> CSS布局与动画</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-success mr-2"></i> JavaScript基础与进阶</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-success mr-2"></i> 浏览器原理与DOM操作</li>
+            </ul>
+          </div>
+          
+          <div class="bg-white rounded-xl shadow-md p-6 card-hover border-t-4 border-secondary">
+            <h4 class="text-lg font-bold mb-3 flex items-center">
+              <i class="fa-solid fa-puzzle-piece text-secondary mr-2"></i> 框架层
+            </h4>
+            <p class="text-gray-600 mb-4">主流前端框架和库，帮助快速构建复杂的用户界面。</p>
+            <ul class="space-y-2 text-gray-700">
+              <li class="flex items-center"><i class="fa-solid fa-check text-success mr-2"></i> React及其生态系统</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-success mr-2"></i> Vue.js及其生态系统</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-success mr-2"></i> 状态管理库(Redux/Vuex)</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-success mr-2"></i> 服务端渲染(SSR)</li>
+            </ul>
+          </div>
+          
+          <div class="bg-white rounded-xl shadow-md p-6 card-hover border-t-4 border-success">
+            <h4 class="text-lg font-bold mb-3 flex items-center">
+              <i class="fa-solid fa-rocket text-success mr-2"></i> 工程层
+            </h4>
+            <p class="text-gray-600 mb-4">前端工程化和性能优化，提升开发效率和用户体验。</p>
+            <ul class="space-y-2 text-gray-700">
+              <li class="flex items-center"><i class="fa-solid fa-check text-success mr-2"></i> 构建工具(Webpack/Vite)</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-success mr-2"></i> 代码质量与测试</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-success mr-2"></i> 性能优化与监控</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-success mr-2"></i> 微前端架构</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 成长路径时间线 -->
+    <section id="timeline" class="py-16 bg-gray-50 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 transform origin-top-right"></div>
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-12">
+          <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">前端工程师成长路径</h2>
+          <p class="text-gray-600 max-w-3xl mx-auto">从初级到高级，每一个阶段都有明确的目标和技能要求，帮助你规划职业发展。</p>
+        </div>
+
+        <div class="relative">
+          <!-- 时间线 -->
+          <div class="timeline-line hidden md:block"></div>
+          
+          <!-- 时间点1 -->
+          <div class="relative mb-12 md:mb-24">
+            <div class="timeline-dot top-0 md:top-6"></div>
+            <div class="md:w-1/2 md:pr-12 md:text-right">
+              <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-3">0-1年</span>
+                <h3 class="text-xl font-bold mb-2">初级前端工程师</h3>
+                <p class="text-gray-600 mb-4">掌握前端基础技术，能够实现简单页面和交互效果。</p>
+                <ul class="space-y-2 text-gray-700">
+                  <li class="flex items-start">
+                    <i class="fa-solid fa-check-circle text-success mt-1 mr-2"></i>
+                    <span>熟练掌握HTML/CSS/JavaScript基础</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fa-solid fa-check-circle text-success mt-1 mr-2"></i>
+                    <span>理解DOM/BOM操作和事件机制</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fa-solid fa-check-circle text-success mt-1 mr-2"></i>
+                    <span>能够实现响应式布局</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fa-solid fa-check-circle text-success mt-1 mr-2"></i>
+                    <span>了解前端开发流程和工具</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 时间点2 -->
+          <div class="relative mb-12 md:mb-24">
+            <div class="timeline-dot top-0 md:top-6"></div>
+            <div class="md:w-1/2 md:ml-auto md:pl-12">
+              <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-3">1-3年</span>
+                <h3 class="text-xl font-bold mb-2">中级前端工程师</h3>
+                <p class="text-gray-600 mb-4">能够独立开发复杂页面和组件，掌握前端框架和工程化。</p>
+                <ul class="space-y-2 text-gray-700">
+                  <li class="flex items-start">
+                    <i class="fa-solid fa-check-circle text-success mt-1 mr-2"></i>
+                    <span>掌握至少一种主流框架(React/Vue)</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fa-solid fa-check-circle text-success mt-1 mr-2"></i>
+                    <span>理解前端工程化和模块化开发</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fa-solid fa-check-circle text-success mt-1 mr-2"></i>
+                    <span>熟悉HTTP协议和AJAX请求</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fa-solid fa-check-circle text-success mt-1 mr-2"></i>
+                    <span>能够解决常见的性能问题</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 时间点3 -->
+          <div class="relative mb-12 md:mb-24">
+            <div class="timeline-dot top-0 md:top-6"></div>
+            <div class="md:w-1/2 md:pr-12 md:text-right">
+              <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-3">3-5年</span>
+                <h3 class="text-xl font-bold mb-2">高级前端工程师</h3>
+                <p class="text-gray-600 mb-4">能够主导复杂项目的架构设计和技术选型，解决各种技术难题。</p>
+                <ul class="space-y-2 text-gray-700">
+                  <li class="flex items-start">
+                    <i class="fa-solid fa-check-circle text-success mt-1 mr-2"></i>
+                    <span>深入理解前端框架原理和源码</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fa-solid fa-check-circle text-success mt-1 mr-2"></i>
+                    <span>掌握前端性能优化和安全防护</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fa-solid fa-check-circle text-success mt-1 mr-2"></i>
+                    <span>熟悉前后端协作和微服务架构</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fa-solid fa-check-circle text-success mt-1 mr-2"></i>
+                    <span>能够指导团队成员和技术分享</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 时间点4 -->
+          <div class="relative">
+            <div class="timeline-dot top-0 md:top-6"></div>
+            <div class="md:w-1/2 md:ml-auto md:pl-12">
+              <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+                <span class="inline-block px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-3">5+年</span>
+                <h3 class="text-xl font-bold mb-2">前端技术专家/架构师</h3>
+                <p class="text-gray-600 mb-4">能够推动技术团队整体发展，制定技术战略和方向。</p>
+                <ul class="space-y-2 text-gray-700">
+                  <li class="flex items-start">
+                    <i class="fa-solid fa-check-circle text-success mt-1 mr-2"></i>
+                    <span>能够设计和实现大型前端架构</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fa-solid fa-check-circle text-success mt-1 mr-2"></i>
+                    <span>关注行业趋势和新技术，推动技术创新</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fa-solid fa-check-circle text-success mt-1 mr-2"></i>
+                    <span>能够带领团队解决复杂技术挑战</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fa-solid fa-check-circle text-success mt-1 mr-2"></i>
+                    <span>参与公司技术决策和团队管理</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 学习资源 -->
+    <section id="resources" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">推荐学习资源</h2>
+          <p class="text-gray-600 max-w-3xl mx-auto">精选优质学习资源，帮助你高效提升前端技能。</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- 书籍 -->
+          <div class="bg-gray-50 rounded-xl p-6 shadow-sm">
+            <h3 class="text-xl font-bold mb-4 flex items-center">
+              <i class="fa-solid fa-book text-primary mr-2"></i> 经典书籍
+            </h3>
+            <ul class="space-y-4">
+              <li class="bg-white p-4 rounded-lg shadow-sm flex items-center">
+                <img src="https://picsum.photos/id/24/80/120" alt="JavaScript高级程序设计" class="w-16 h-24 object-cover rounded mr-4">
+                <div>
+                  <h4 class="font-medium">JavaScript高级程序设计</h4>
+                  <p class="text-gray-500 text-sm">JavaScript经典书籍，深入理解语言核心</p>
+                </div>
+              </li>
+              <li class="bg-white p-4 rounded-lg shadow-sm flex items-center">
+                <img src="https://picsum.photos/id/25/80/120" alt="CSS揭秘" class="w-16 h-24 object-cover rounded mr-4">
+                <div>
+                  <h4 class="font-medium">CSS揭秘</h4>
+                  <p class="text-gray-500 text-sm">CSS进阶必备，掌握各种高级技巧</p>
+                </div>
+              </li>
+              <li class="bg-white p-4 rounded-lg shadow-sm flex items-center">
+                <img src="https://picsum.photos/id/26/80/120" alt="React官方文档" class="w-16 h-24 object-cover rounded mr-4">
+                <div>
+                  <h4 class="font-medium">React官方文档</h4>
+                  <p class="text-gray-500 text-sm">React权威指南，从入门到精通</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- 在线课程 -->
+          <div class="bg-gray-50 rounded-xl p-6 shadow-sm">
+            <h3 class="text-xl font-bold mb-4 flex items-center">
+              <i class="fa-solid fa-graduation-cap text-secondary mr-2"></i> 在线课程
+            </h3>
+            <ul class="space-y-4">
+              <li class="bg-white p-4 rounded-lg shadow-sm">
+                <h4 class="font-medium mb-2">MDN Web Docs</h4>
+                <p class="text-gray-600 mb-2">权威的Web技术文档，包含HTML、CSS、JavaScript等</p>
+                <a href="#" class="text-primary hover:text-primary/80 text-sm flex items-center">
+                  访问网站 <i class="fa-solid fa-arrow-right ml-1"></i>
+                </a>
+              </li>
+              <li class="bg-white p-4 rounded-lg shadow-sm">
+                <h4 class="font-medium mb-2">React官方教程</h4>
+                <p class="text-gray-600 mb-2">从基础到高级，全面学习React框架</p>
+                <a href="#" class="text-primary hover:text-primary/80 text-sm flex items-center">
+                  访问网站 <i class="fa-solid fa-arrow-right ml-1"></i>
+                </a>
+              </li>
+              <li class="bg-white p-4 rounded-lg shadow-sm">
+                <h4 class="font-medium mb-2">Vue.js权威指南</h4>
+                <p class="text-gray-600 mb-2">深入学习Vue.js框架及其生态系统</p>
+                <a href="#" class="text-primary hover:text-primary/80 text-sm flex items-center">
+                  访问网站 <i class="fa-solid fa-arrow-right ml-1"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- 社区和博客 -->
+          <div class="bg-gray-50 rounded-xl p-6 shadow-sm">
+            <h3 class="text-xl font-bold mb-4 flex items-center">
+              <i class="fa-solid fa-comments text-success mr-2"></i> 社区和博客
+            </h3>
+            <ul class="space-y-4">
+              <li class="bg-white p-4 rounded-lg shadow-sm">
+                <h4 class="font-medium mb-2">GitHub</h4>
+                <p class="text-gray-600 mb-2">全球最大的开源社区，学习优秀项目和代码</p>
+                <a href="#" class="text-primary hover:text-primary/80 text-sm flex items-center">
+                  访问网站 <i class="fa-solid fa-arrow-right ml-1"></i>
+                </a>
+              </li>
+              <li class="bg-white p-4 rounded-lg shadow-sm">
+                <h4 class="font-medium mb-2">Stack Overflow</h4>
+                <p class="text-gray-600 mb-2">技术问答社区，解决各种编程问题</p>
+                <a href="#" class="text-primary hover:text-primary/80 text-sm flex items-center">
+                  访问网站 <i class="fa-solid fa-arrow-right ml-1"></i>
+                </a>
+              </li>
+              <li class="bg-white p-4 rounded-lg shadow-sm">
+                <h4 class="font-medium mb-2">掘金</h4>
+                <p class="text-gray-600 mb-2">国内优质的技术社区，分享前沿技术</p>
+                <a href="#" class="text-primary hover:text-primary/80 text-sm flex items-center">
+                  访问网站 <i class="fa-solid fa-arrow-right ml-1"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 推荐工具 -->
+    <section id="tools" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">开发工具推荐</h2>
+          <p class="text-gray-600 max-w-3xl mx-auto">提高开发效率的必备工具和插件。</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+              <i class="fa-solid fa-code text-primary text-xl"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">VS Code</h3>
+            <p class="text-gray-600">强大的代码编辑器，支持丰富的插件生态系统。</p>
+          </div>
+          
+          <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+            <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mb-4">
+              <i class="fa-solid fa-terminal text-secondary text-xl"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Webpack</h3>
+            <p class="text-gray-600">模块打包工具，处理各种资源和模块。</p>
+          </div>
+          
+          <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+            <div class="w-12 h-12 bg-success/10 rounded-full flex items-center justify-center mb-4">
+              <i class="fa-solid fa-bug text-success text-xl"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Chrome DevTools</h3>
+            <p class="text-gray-600">强大的浏览器调试工具，前端开发必备。</p>
+          </div>
+          
+          <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+            <div class="w-12 h-12 bg-warning/10 rounded-full flex items-center justify-center mb-4">
+              <i class="fa-solid fa-git text-warning text-xl"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Git</h3>
+            <p class="text-gray-600">版本控制系统，团队协作必备工具。</p>
+          </div>
+          
+          <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+            <div class="w-12 h-12 bg-danger/10 rounded-full flex items-center justify-center mb-4">
+              <i class="fa-solid fa-paint-brush text-danger text-xl"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Figma</h3>
+            <p class="text-gray-600">强大的UI设计工具，支持团队协作。</p>
+          </div>
+          
+          <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+              <i class="fa-solid fa-database text-primary text-xl"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Postman</h3>
+            <p class="text-gray-600">API开发和测试工具，简化接口调试。</p>
+          </div>
+          
+          <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+            <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mb-4">
+              <i class="fa-solid fa-cubes text-secondary text-xl"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">NPM/Yarn</h3>
+            <p class="text-gray-600">包管理工具，管理项目依赖。</p>
+          </div>
+          
+          <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+            <div class="w-12 h-12 bg-success/10 rounded-full flex items-center justify-center mb-4">
+              <i class="fa-solid fa-cloud text-success text-xl"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">GitHub</h3>
+            <p class="text-gray-600">代码托管平台，支持版本控制和协作开发。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 行动号召 -->
+    <section class="py-16 bg-gradient-to-r from-primary to-secondary text-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-6">开始规划你的前端职业发展</h2>
+        <p class="text-white/90 max-w-2xl mx-auto mb-8 text-lg">掌握这些技能和资源，成为一名优秀的前端工程师，开启你的技术成长之旅。</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="#skills" class="px-8 py-3 bg-white text-primary font-medium rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5">
+            探索技能树
+          </a>
+          <a href="#timeline" class="px-8 py-3 bg-transparent border-2 border-white text-white font-medium rounded-lg hover:bg-white/10 transition-all">
+            查看成长路径
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="bg-dark text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-lg font-bold mb-4">前端职业发展路线图</h3>
+          <p class="text-gray-400 mb-4">帮助前端开发者规划职业发展路径，掌握核心技能，提升竞争力。</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fa-brands fa-github text-xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fa-brands fa-twitter text-xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+              <i class="fa-brands fa-linkedin text-xl"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-bold mb-4">快速链接</h4>
+          <ul class="space-y-2">
+            <li><a href="#overview" class="text-gray-400 hover:text-white transition-colors">概述</a></li>
+            <li><a href="#skills" class="text-gray-400 hover:text-white transition-colors">技能树</a></li>
+            <li><a href="#timeline" class="text-gray-400 hover:text-white transition-colors">成长路径</a></li>
+            <li><a href="#resources" class="text-gray-400 hover:text-white transition-colors">学习资源</a></li>
+            <li><a href="#tools" class="text-gray-400 hover:text-white transition-colors">推荐工具</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-bold mb-4">资源</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">文档</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">教程</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">博客</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">社区</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">常见问题</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-bold mb-4">订阅更新</h4>
+          <p class="text-gray-400 mb-4">订阅我们的通讯，获取最新的前端技术和职业发展资讯。</p>
+          <form class="flex">
+            <input type="email" placeholder="你的邮箱地址" class="px-4 py-2 rounded-l-lg focus:outline-none text-dark flex-grow">
+            <button type="submit" class="bg-primary hover:bg-primary/90 px-4 py-2 rounded-r-lg transition-colors">
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500">
+        <p>&copy; 2025 前端职业发展路线图. 保留所有权利.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 移动端菜单切换
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // 导航栏滚动效果
+    const header = document.querySelector('header');
+    let lastScrollY = window.scrollY;
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        header.classList.add('shadow-md', 'py-2');
+        header.classList.remove('py-3');
+      } else {
+        header.classList.remove('shadow-md', 'py-2');
+        header.classList.add('py-3');
+      }
+      
+      lastScrollY = window.scrollY;
+    });
+    
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // 关闭移动端菜单
+          if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+          }
+        }
+      });
+    });
+    
+    // 动画效果
+    const animateOnScroll = () => {
+      const elements = document.querySelectorAll('.card-hover');
+      
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementPosition < windowHeight - 100) {
+          element.classList.add('animate-fadeIn');
+        }
+      });
+    };
+    
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
+  </script>
+</body>
+</html>
+    
